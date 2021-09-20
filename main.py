@@ -63,10 +63,44 @@ class AnalysisArray:
 
         self.arr = new_arr
 
+    def bubble_test(self):
+        print("-"*10 + "Bubble sort test" + "-"*10)
+        for n in [1000, 10000, 100000]:
+            print("Best result for", n, "element: ", end="")
+            self.generate_up(n)
+            answ = self.bubble_sort()
+            print("compares: ", answ[0], ", swaps: ", answ[1], sep="")
+
+            print("Average result for", n, "element: ", end="")
+            self.generate_rand(n)
+            answ = self.shell_sort()
+            print("compares: ", answ[0], ", swaps: ", answ[1], sep="")
+
+            print("Worst result for", n, "element: ", end="")
+            self.generate_down(n)
+            answ = self.bubble_sort()
+            print("compares: ", answ[0], ", swaps: ", answ[1], sep="", end="\n\n")
+
+    def shell_test(self):
+        print("-" * 10 + "Shell's sort test" + "-" * 10)
+        for n in [1000, 10000, 10000]:
+            print("Best result for", n, "element: ", end="")
+            self.generate_up(n)
+            answ = self.shell_sort()
+            print("compares: ", answ[0], ", swaps: ", answ[1], sep="")
+
+            print("Average result for", n, "element: ", end="")
+            self.generate_rand(n)
+            answ = self.shell_sort()
+            print("compares: ", answ[0], ", swaps: ", answ[1], sep="")
+
+            print("Worst result for", n, "element: ", end="")
+            self.generate_down(n)
+            answ = self.shell_sort()
+            print("compares: ", answ[0], ", swaps: ", answ[1], sep="", end="\n\n")
+
 
 if __name__ == "__main__":
     test = AnalysisArray()
-    test.generate_up(100)
-    print(*test.arr)
-    test.shell_sort()
-    print(*test.arr)
+    test.bubble_test()
+    test.shell_test()
