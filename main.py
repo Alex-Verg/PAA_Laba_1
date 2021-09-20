@@ -8,7 +8,7 @@ class AnalysisArray:
         self.arr = list()
 
     def generate_up(self, n):
-        self.arr = range(1, n+1)
+        self.arr = list(range(1, n+1))
 
     def generate_rand(self, n):
         self.arr.clear()
@@ -16,7 +16,7 @@ class AnalysisArray:
             self.arr.append(random.randint(1, n))
 
     def generate_down(self, n):
-        self.arr = range(n, 0, -1)
+        self.arr = list(range(n, 0, -1))
 
     def bubble_sort(self):
         total_swaps = 0
@@ -51,10 +51,22 @@ class AnalysisArray:
 
         return total_compares, total_swaps
 
-     
+    def count_sort(self):
+        counts = [0] * (len(self.arr) + 1)
+        for el in self.arr:
+            counts[el] += 1
+
+        new_arr = []
+
+        for i in range(len(counts)):
+            new_arr.extend([i]*counts[i])
+
+        self.arr = new_arr
+
+
 if __name__ == "__main__":
     test = AnalysisArray()
-    test.generate_rand(20)
+    test.generate_up(100)
     print(*test.arr)
     test.shell_sort()
     print(*test.arr)
