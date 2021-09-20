@@ -34,9 +34,27 @@ class AnalysisArray:
 
         return total_compares, total_swaps
 
+    def shell_sort(self):
+        total_swaps = 0
+        total_compares = 0
+        d = len(self.arr) // 2
+        while d:
+            for i in range(d):
+                for j in range(i+d, len(self.arr), d):
+                    k = j
+                    total_compares += 1
+                    while k > d-1 and self.arr[k] < self.arr[k-d]:
+                        self.arr[k], self.arr[k-d] = self.arr[k-d], self.arr[k]
+                        total_swaps += 1
+                        k -= d
+            d = d // 2
 
+        return total_compares, total_swaps
+
+     
 if __name__ == "__main__":
     test = AnalysisArray()
-    test.generate_rand(50)
-    test.bubble_sort()
+    test.generate_rand(20)
+    print(*test.arr)
+    test.shell_sort()
     print(*test.arr)
