@@ -28,7 +28,7 @@ class AnalysisArray:
                 if self.arr[j+1] < self.arr[j]:
                     self.arr[j+1], self.arr[j] = self.arr[j], self.arr[j+1]
                     swaps += 1
-            total_swaps += swaps
+                    total_swaps += 1
             if not swaps:
                 break
 
@@ -73,7 +73,7 @@ class AnalysisArray:
 
             print("Average result for", n, "element: ", end="")
             self.generate_rand(n)
-            answ = self.shell_sort()
+            answ = self.bubble_sort()
             print("compares: ", answ[0], ", swaps: ", answ[1], sep="")
 
             print("Worst result for", n, "element: ", end="")
@@ -83,7 +83,7 @@ class AnalysisArray:
 
     def shell_test(self):
         print("-" * 10 + "Shell's sort test" + "-" * 10)
-        for n in [1000, 10000, 10000]:
+        for n in [1000, 10000, 100000]:
             print("Best result for", n, "element: ", end="")
             self.generate_up(n)
             answ = self.shell_sort()
